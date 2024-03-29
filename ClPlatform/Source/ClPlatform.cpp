@@ -51,6 +51,41 @@ ClPlatform::ClPlatform()
       return;
   }
 
+  bool printDeviceInfo = false;
+  if(printDeviceInfo)
+  {
+      char device_name[100];
+      clGetDeviceInfo(device,CL_DEVICE_NAME,100,device_name,NULL); 
+      std::cout << "Device name: " << device_name << std::endl;
+
+	
+      cl_device_local_mem_type local_mem_type;
+      clGetDeviceInfo(device,CL_DEVICE_LOCAL_MEM_TYPE	 ,sizeof(cl_device_local_mem_type),&local_mem_type,NULL); 
+      switch(local_mem_type)
+      {
+        case CL_LOCAL:
+          std::cout << "Local mem type is CL_LOCAL" << std::endl;
+          break;
+        case CL_GLOBAL:
+          std::cout << "Local mem type is CL_GLOBAL" << std::endl;
+          break;
+      }
+
+      cl_ulong local_mem_size=0;
+      clGetDeviceInfo(device,CL_DEVICE_LOCAL_MEM_SIZE	 ,sizeof(cl_ulong),&local_mem_size,NULL); 
+      std::cout << "Local mem size = " << local_mem_size << " bytes = " << (local_mem_size/1024) << " kB" << std::endl;
+
+      cl_uint max_comp_units=0;
+      clGetDeviceInfo(device, CL_DEVICE_MAX_COMPUTE_UNITS ,sizeof(cl_uint),&max_comp_units,NULL);
+      std::cout << "Max conpute units = " << max_comp_units << std::endl;
+
+      cl_uint pref_vect_width_float=0;
+      clGetDeviceInfo(device, CL_DEVICE_NATIVE_VECTOR_WIDTH_FLOAT ,sizeof(cl_uint),&pref_vect_width_float,NULL);
+      std::cout << "Prefered float vector width = " << pref_vect_width_float << std::endl;
+
+
+  }
+
   setUpSuccessfully = true;
 }
 
