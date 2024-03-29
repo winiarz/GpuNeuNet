@@ -49,7 +49,7 @@ bool MatrixMultiplyTest::performTest()
 {
     prepareTest();
 
-    measureTime(kernelName, [&](){(*kernel)[64u][64u](gpuMemory);});
+    measureTime(kernelName, [&](){(*kernel)[1u][256u](gpuMemory);});
 
     C = (*A) * (*B);
 
