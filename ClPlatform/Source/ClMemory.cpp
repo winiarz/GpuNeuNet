@@ -99,3 +99,9 @@ uint calculateSize(uint n, ClMemoryCreation clMemoryCreation, size_t sizeOfType)
       return 0;
   }
 }
+
+ClMemory::~ClMemory()
+{
+  clReleaseMemObject(memory);
+}
+

@@ -17,6 +17,8 @@ class ClMemory {
 friend class ClKernel;
 public:
   ClMemory(uint, ClMemoryCreation = CL_MEMORY_ALLOC );
+  ~ClMemory();
+
   bool operator!();
   bool isSetUpSuccessfully();
   void copyIn (void*,uint,uint);
