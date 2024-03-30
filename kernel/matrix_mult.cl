@@ -4,11 +4,13 @@ __constant const uint MATRIX_SIZE_SQ = 256u*256u;
 __constant const uint MATRIX_SIZE_LOG = 8u;
 __constant const uint MATRIX_SIZE_MOD_BIT = 0x000000ff;
 
+__constant const uint MATRIX_COUNT = 4;
+
 __constant const uint REP_NB = 100u;
 
 __kernel void matrixMultiply_simple_n_n_n(__global float* g_A,
-								          __global float* g_B,
-									      __global float* g_result)
+								                          __global float* g_B,
+									                        __global float* g_result)
 {
     for(uint a=0; a< REP_NB; a++)
     {
