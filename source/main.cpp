@@ -29,5 +29,9 @@ int main()
     MultiMatrixMultiplyTest multiTest(MultiMatrixType_separateNormal, MatrixType_normal, MultiMatrixType_separateNormal,
                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_simple_n_n_n");
     multiTest.performTest();
+    MultiMatrixMultiplyTest multiTest2(MultiMatrixType_separateNormal, MatrixType_normal, MultiMatrixType_separateNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt1_n_n_n");
+    multiTest2.performTest();
+
 }
 

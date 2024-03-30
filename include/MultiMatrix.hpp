@@ -5,7 +5,8 @@
 typedef unsigned int uint;
 
 enum MultiMatrixType {
-MultiMatrixType_separateNormal
+MultiMatrixType_separateNormal,
+MultiMatrixType_combinedNormal
 };
 
 class IMultiMatrix {
@@ -36,6 +37,19 @@ public:
 private:
   float data[matrixSize*matrixSize*matrixCount];
 };
+
+class MultiMatrix_CombinedNormal : public IMultiMatrix {
+public:
+    virtual void set(float, uint, uint, uint);
+    virtual float get(uint, uint, uint);
+    virtual MultiMatrixType getType();
+    virtual float* getData();
+    virtual std::shared_ptr<ClTypedMemory<float>> copyToGpu();
+
+private:
+  float data[matrixSize*matrixSize*matrixCount];
+};
+
 
 std::shared_ptr<IMultiMatrix> operator*(std::shared_ptr<IMultiMatrix>, std::shared_ptr<IMatrix>);
 

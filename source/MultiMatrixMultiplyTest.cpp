@@ -55,7 +55,7 @@ void MultiMatrixMultiplyTest::prepareTest()
     gpuMemory.reserve(3);
     gpuMemory.emplace_back(A->copyToGpu());
     gpuMemory.emplace_back(B->copyToGpu());
-    gpuMemory.emplace_back(std::make_shared<ClTypedMemory<float>> (IMultiMatrix::matrixSize*IMultiMatrix::matrixSize*IMultiMatrix::matrixCount));
+    gpuMemory.emplace_back(std::make_shared<ClTypedMemory<float>> (IMultiMatrix::matrixSize * IMultiMatrix::matrixSize * IMultiMatrix::matrixCount));
 
 }
 
@@ -65,7 +65,7 @@ bool MultiMatrixMultiplyTest::performTest()
   C = A * B;
 
   measureTime(kernelName, [&](){(*kernel)[1u][256u](gpuMemory);});
-  gpuMemory[2]->copyOut(C_k->getData(), 0, sizeof(float)*IMultiMatrix::matrixSize*IMultiMatrix::matrixSize*IMultiMatrix::matrixCount);
+  gpuMemory[2]->copyOut(C_k->getData(), 0, sizeof(float) * IMultiMatrix::matrixSize * IMultiMatrix::matrixSize * IMultiMatrix::matrixCount);
 
   if(*C == *C_k)
     {

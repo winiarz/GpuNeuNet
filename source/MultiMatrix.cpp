@@ -75,4 +75,30 @@ std::shared_ptr<ClTypedMemory<float>> MultiMatrix_SeparateNormal::copyToGpu()
     return result;
 }
 
+void MultiMatrix_CombinedNormal::set(float value, uint x, uint y, uint n)
+{
+  data[n+matrixCount*(x+matrixSize*y)] = value;
+}
+
+float MultiMatrix_CombinedNormal::get(uint x, uint y, uint n)
+{
+  return data[n+matrixCount*(x+matrixSize*y)];
+}
+
+MultiMatrixType MultiMatrix_CombinedNormal::getType()
+{
+  return MultiMatrixType_combinedNormal;
+}
+
+float* MultiMatrix_CombinedNormal::getData()
+{
+  return data;
+}
+
+std::shared_ptr<ClTypedMemory<float>> MultiMatrix_CombinedNormal::copyToGpu()
+{
+    auto result = std::make_shared<ClTypedMemory<float>> (matrixSize*matrixSize*matrixCount);
+    result->copyIn(data, 0, matrixSize*matrixSize*matrixCount);
+    return result;
+}
 
