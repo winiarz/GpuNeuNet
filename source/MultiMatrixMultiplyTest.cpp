@@ -42,6 +42,8 @@ std::shared_ptr<IMultiMatrix> MultiMatrixMultiplyTest::createMultiMatrixOfType(M
     {
       case MultiMatrixType_separateNormal:
         return std::make_shared<MultiMatrix_SeparateNormal>();
+      case MultiMatrixType_combinedNormal:
+        return std::make_shared<MultiMatrix_CombinedNormal>();
     }
     return nullptr;
 }

@@ -22,8 +22,7 @@ int main()
 {
     srand48(123456789);
 
-    testSingleMatrixMultiply();
-
+//    testSingleMatrixMultiply();
 
     MultiMatrix_SeparateNormal mm;
     MultiMatrixMultiplyTest multiTest(MultiMatrixType_separateNormal, MatrixType_normal, MultiMatrixType_separateNormal,
@@ -32,6 +31,21 @@ int main()
     MultiMatrixMultiplyTest multiTest2(MultiMatrixType_separateNormal, MatrixType_normal, MultiMatrixType_separateNormal,
                                        "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt1_n_n_n");
     multiTest2.performTest();
+
+    MultiMatrixMultiplyTest multiTest3(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_simple_cn_n_cn");
+    multiTest3.performTest();
+
+    MultiMatrixMultiplyTest multiTest4(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt1_cn_n_cn");
+    multiTest4.performTest();
+
+    MultiMatrixMultiplyTest multiTest5(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt2_cn_n_cn");
+    multiTest5.performTest();
+    MultiMatrixMultiplyTest multiTest6(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt3_cn_n_cn");
+    multiTest6.performTest();
 
 }
 
