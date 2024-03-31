@@ -46,6 +46,9 @@ int main()
     MultiMatrixMultiplyTest multiTest6(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
                                        "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt3_cn_n_cn");
     multiTest6.performTest();
+    MultiMatrixMultiplyTest multiTest7(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt4_cn_n_cn");
+    multiTest7.performTest();
 
 }
 
