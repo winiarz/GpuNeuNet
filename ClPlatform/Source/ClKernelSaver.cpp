@@ -1,5 +1,6 @@
 #include "ClKernelSaver.hpp"
 #include "ClKernel.hpp"
+#include <string.h>
 
 cl_int ClKernelSaver::getDeviceCount( std::shared_ptr<IClSingleImplementationKernel> kernel)
 {

@@ -1,10 +1,8 @@
-#ifndef __I_CL_KERNEL__
-#define __I_CL_KERNEL__
+#pragma once
 
 #include <CL/cl.h>
 #include <stl.hpp>
 #include <memory>
-#include "boost.hpp"
 
 typedef unsigned int uint;
 
@@ -23,4 +21,3 @@ public:
     virtual ~IClKernel(){}
 };
 
-#endif
