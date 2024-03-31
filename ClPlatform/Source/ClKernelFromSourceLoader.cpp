@@ -11,9 +11,9 @@ ClKernelFromSourceLoader::ClKernelFromSourceLoader(std::set<std::string> p_inclu
 
 std::shared_ptr<ClKernel> ClKernelFromSourceLoader::loadKernel(std::string filename, std::string kernelName)
 {
-    boost::shared_ptr<std::string> source = readFile(filename);
+    std::shared_ptr<std::string> source = readFile(filename);
 
-    boost::shared_ptr<std::string> sourceWithReplacedIncludes = includePreprocessor.replaceIncludes(source, includeDirectories);
+    std::shared_ptr<std::string> sourceWithReplacedIncludes = includePreprocessor.replaceIncludes(source, includeDirectories);
     cl_program program = compileSource( sourceWithReplacedIncludes );
     return std::make_shared<ClKernel>(program, kernelName.c_str());
 }
@@ -21,14 +21,14 @@ std::shared_ptr<ClKernel> ClKernelFromSourceLoader::loadKernel(std::string filen
 std::shared_ptr<ClKernel> ClKernelFromSourceLoader::loadKernel(std::string filename)
 {
 
-    boost::shared_ptr<std::string> source = readFile(filename);
+    std::shared_ptr<std::string> source = readFile(filename);
 
-    boost::shared_ptr<std::string> sourceWithReplacedIncludes = includePreprocessor.replaceIncludes(source, includeDirectories);
+    std::shared_ptr<std::string> sourceWithReplacedIncludes = includePreprocessor.replaceIncludes(source, includeDirectories);
     cl_program program = compileSource( sourceWithReplacedIncludes );
     return std::make_shared<ClKernel>(program);
 }
 
-cl_program ClKernelFromSourceLoader::compileSource(boost::shared_ptr<std::string> source)
+cl_program ClKernelFromSourceLoader::compileSource(std::shared_ptr<std::string> source)
 {
     ClPlatform& platform = ClPlatform::getPlatform();
 
@@ -68,7 +68,7 @@ cl_program ClKernelFromSourceLoader::compileSource(boost::shared_ptr<std::string
     return program;
 }
 
-boost::shared_ptr<std::string> ClKernelFromSourceLoader::readFile(std::string& filename)
+std::shared_ptr<std::string> ClKernelFromSourceLoader::readFile(std::string& filename)
 {
     std::ifstream file(filename.c_str());
     if ( !file.is_open() )
@@ -77,7 +77,7 @@ boost::shared_ptr<std::string> ClKernelFromSourceLoader::readFile(std::string& f
         throw FILE_READ_ERROR;
     }
 
-    boost::shared_ptr<std::string> text = boost::make_shared<std::string>();
+    std::shared_ptr<std::string> text = std::make_shared<std::string>();
 
     file.seekg(0, std::ios::end);
     text->reserve(file.tellg());

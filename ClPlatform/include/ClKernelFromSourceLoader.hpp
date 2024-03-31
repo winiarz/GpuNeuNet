@@ -13,8 +13,8 @@ public:
 
     ~ClKernelFromSourceLoader();
 private:
-    boost::shared_ptr<std::string> readFile(std::string& filename);
-    cl_program compileSource(boost::shared_ptr<std::string> source);
+    std::shared_ptr<std::string> readFile(std::string& filename);
+    cl_program compileSource(std::shared_ptr<std::string> source);
 
     static const unsigned int MAX_BUILD_LOG_SIZE = 16384;
     std::set<std::string> includeDirectories;

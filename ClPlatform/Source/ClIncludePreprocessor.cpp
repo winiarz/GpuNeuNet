@@ -1,21 +1,21 @@
 #include "ClIncludePreprocessor.hpp"
 #include "ClError.hpp"
 
-boost::shared_ptr<std::string> ClIncludePreprocessor::replaceIncludes( boost::shared_ptr<std::string> source,
-                                                                       std::set<std::string>& includeDirectories )
+std::shared_ptr<std::string> ClIncludePreprocessor::replaceIncludes( std::shared_ptr<std::string> source,
+                                                                     std::set<std::string>& includeDirectories )
 {
     std::stringstream output;
     std::istringstream sourceStream( *source );
 
     std::string line;
 
-    while ( std::getline( sourceStream, line) ) 
+    while ( std::getline( sourceStream, line) )
     {
         if ( isLineIncludeDirective(line) )
         {
             std::string includeFilename = getIncludeFilename(line);
             std::string includeFilePath = getIncludeFilePath(includeFilename, includeDirectories);
-            boost::shared_ptr<std::string> includeText = readFile(includeFilePath);
+            std::shared_ptr<std::string> includeText = readFile(includeFilePath);
 			std::string textWithReplacedIncludes = *replaceIncludes(includeText, includeDirectories);
             output << textWithReplacedIncludes;
         }
@@ -25,10 +25,10 @@ boost::shared_ptr<std::string> ClIncludePreprocessor::replaceIncludes( boost::sh
         }
     }
 
-    return boost::make_shared<std::string>(output.str());
+    return std::make_shared<std::string>(output.str());
 }
 
-std::string ClIncludePreprocessor::getIncludeFilePath(std::string& includeFilename, 
+std::string ClIncludePreprocessor::getIncludeFilePath(std::string& includeFilename,
                                                       std::set<std::string>& includeDirectories)
 {
     ifstream input;
@@ -67,18 +67,18 @@ bool ClIncludePreprocessor::isLineIncludeDirective( std::string& line )
     return (line.size()>7)&&(line[0] == '#')&&(line[1]=='i')&&(line[2]=='n')&&(line[3]=='c')&&(line[4]=='l')&&(line[5]=='u')&&(line[6]=='d')&&(line[7]=='e');
 }
 
-boost::shared_ptr<std::string> ClIncludePreprocessor::readFile(std::string& filename)
+std::shared_ptr<std::string> ClIncludePreprocessor::readFile(std::string& filename)
 {
     std::ifstream file(filename.c_str());
-    if ( !file.is_open() ) 
+    if ( !file.is_open() )
     {
         std::cerr << "error while reading file " << filename << std::endl;
         throw FILE_READ_ERROR;
     }
 
-    boost::shared_ptr<std::string> text = boost::make_shared<std::string>();
+    std::shared_ptr<std::string> text = std::make_shared<std::string>();
 
-    file.seekg(0, std::ios::end);   
+    file.seekg(0, std::ios::end);
     text->reserve(file.tellg());
     file.seekg(0, std::ios::beg);
 
