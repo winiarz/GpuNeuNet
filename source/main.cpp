@@ -49,6 +49,22 @@ int main()
     MultiMatrixMultiplyTest multiTest7(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
                                        "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt4_cn_n_cn");
     multiTest7.performTest();
+    MultiMatrixMultiplyTest multiTest8(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt5_cn_n_cn");
+    multiTest8.performTest();
+    MultiMatrixMultiplyTest multiTest8a(MultiMatrixType_combinedNormal, MatrixType_normal, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_opt6_cn_n_cn");
+    multiTest8a.performTest();
+
+    MultiMatrixMultiplyTest multiTest9(MultiMatrixType_combinedNormal, MatrixType_swapped, MultiMatrixType_combinedNormal,
+                                       "kernel/multi_matrix_mult_sw.cl", "multiMatrixMultiply_opt1_cn_s_cn");
+    multiTest9.performTest();
+    MultiMatrixMultiplyTest multiTest10(MultiMatrixType_combinedNormal, MatrixType_swapped, MultiMatrixType_combinedNormal,
+                                        "kernel/multi_matrix_mult_sw.cl", "multiMatrixMultiply_opt2_cn_s_cn");
+    multiTest10.performTest();
+    MultiMatrixMultiplyTest multiTest11(MultiMatrixType_combinedNormal, MatrixType_swapped, MultiMatrixType_combinedNormal,
+                                        "kernel/multi_matrix_mult_sw.cl", "multiMatrixMultiply_opt3_cn_s_cn");
+    multiTest11.performTest();
 
 }
 
