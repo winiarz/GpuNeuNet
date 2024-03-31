@@ -15,7 +15,7 @@ private:
     std::string kernelSourceFilename, kernelName;
     std::shared_ptr<IMatrix> A,B,C_k;
     Matrix C;
-    boost::shared_ptr<ClKernel> kernel;
+    std::shared_ptr<ClKernel> kernel;
     static std::shared_ptr<ClKernelFromSourceLoader> kernelLoader;
     std::vector<std::shared_ptr<ClMemory>> gpuMemory;
 };

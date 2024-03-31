@@ -1,5 +1,4 @@
-#ifndef __CL_KERNEL_FROM_SOURCE_LOADER__
-#define __CL_KERNEL_FROM_SOURCE_LOADER__
+#pragma once
 
 #include <CL/cl.h>
 #include "IClKernelFromFileLoader.hpp"
@@ -9,8 +8,8 @@ class ClKernelFromSourceLoader : public IClKernelFromFileLoader
 {
 public:
     ClKernelFromSourceLoader(std::set<std::string>);
-    virtual boost::shared_ptr<ClKernel> loadKernel(std::string filename);
-    boost::shared_ptr<ClKernel> loadKernel(std::string filename, std::string kernelName);
+    virtual std::shared_ptr<ClKernel> loadKernel(std::string filename);
+    std::shared_ptr<ClKernel> loadKernel(std::string filename, std::string kernelName);
 
     ~ClKernelFromSourceLoader();
 private:
@@ -22,4 +21,3 @@ private:
     ClIncludePreprocessor includePreprocessor;
 };
 
-#endif

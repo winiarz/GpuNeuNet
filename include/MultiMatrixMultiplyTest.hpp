@@ -20,6 +20,6 @@ private:
     std::string kernelName;
     static std::shared_ptr<ClKernelFromSourceLoader> kernelLoader;
     std::vector<std::shared_ptr<ClMemory>> gpuMemory;
-    boost::shared_ptr<ClKernel> kernel;
+    std::shared_ptr<ClKernel> kernel;
 };
 

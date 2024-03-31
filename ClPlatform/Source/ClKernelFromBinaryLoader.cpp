@@ -23,7 +23,7 @@ size_t ClKernelFromBinaryLoader::readBinarySize( FILE* file )
     size_t binarySize;
     size_t readSize = fread( &binarySize, sizeof(binarySize), 1, file);
 
-    if ( readSize < 1 ) 
+    if ( readSize < 1 )
     {
         std::cerr << "Kernel file is too short" << std::endl;
         throw INCORRECT_KERNEL_FILE;
@@ -37,7 +37,7 @@ unsigned char* ClKernelFromBinaryLoader::readBinary( FILE* file, size_t binarySi
     unsigned char *binary = new unsigned char[binarySize];
     size_t readSize = fread(binary, 1, binarySize, file);
 
-    if ( readSize < binarySize ) 
+    if ( readSize < binarySize )
     {
         delete [] binary;
         std::cerr << "Kernel file is too short, expected read size = " << binarySize << " actual = " << readSize << std::endl;
@@ -47,13 +47,13 @@ unsigned char* ClKernelFromBinaryLoader::readBinary( FILE* file, size_t binarySi
     return binary;
 }
 
-boost::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel(std::string filename)
+std::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel(std::string filename)
 {
     FILE* file = openFile( filename );
 		return loadKernel( file );
 }
 
-boost::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel( FILE* file )
+std::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel( FILE* file )
 {
     char kernelName[20];
     fread( kernelName, sizeof(char), 20, file );
@@ -61,7 +61,7 @@ boost::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel( FILE* file )
     unsigned char * binary = readBinary( file, binarySize );
 
     ClPlatform& platform = ClPlatform::getPlatform();
-    
+
     cl_context context = platform.getContext();
     cl_device_id device = platform.getDevice();
 
@@ -79,7 +79,7 @@ boost::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel( FILE* file )
 
     delete [] binary;
 
-    if ( (error != CL_SUCCESS) || (binaryStatus != CL_SUCCESS) ) 
+    if ( (error != CL_SUCCESS) || (binaryStatus != CL_SUCCESS) )
     {
         std::cerr << "Error program binary is incorrect!, error = " << error << std::endl;
         throw INCORRECT_KERNEL_FILE;
@@ -99,6 +99,6 @@ boost::shared_ptr<ClKernel> ClKernelFromBinaryLoader::loadKernel( FILE* file )
         throw INCORRECT_KERNEL_FILE;
     }
 
-    return boost::make_shared<ClKernel>(program, kernelName);
+    return std::make_shared<ClKernel>(program, kernelName);
 }
 

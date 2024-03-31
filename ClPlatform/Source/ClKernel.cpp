@@ -12,7 +12,7 @@ ClKernel::ClKernel( const char fileName[], const char p_kernelName[] ) :
     setUpSuccessfully = false;
     try
     {
-        boost::shared_ptr<ClKernel> tempKernel = ClKernelFromBinaryLoader().loadKernel(fileName);
+        std::shared_ptr<ClKernel> tempKernel = ClKernelFromBinaryLoader().loadKernel(fileName);
         program = tempKernel->getProgram();
     }
     catch ( ClError error )
