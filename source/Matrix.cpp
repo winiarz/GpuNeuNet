@@ -16,6 +16,11 @@ bool IMatrix::operator==(IMatrix& other)
     return true;
 }
 
+Matrix::~Matrix()
+{
+}
+
+
 void Matrix::set(float value, uint x, uint y)
 {
     m[getIdx(x,y)] = value;
@@ -32,6 +37,18 @@ void IMatrix::fillRandom()
         for(uint y=0; y<matrixSize; y++)
             set(drand48(), x, y);
 }
+
+void IMatrix::fillRandomInputs()
+{
+    for(uint x=0; x<matrixSize; x++)
+    {
+        for(uint y=0; y<matrixSize-1; y++)
+            set(drand48(), x, y);
+ 
+        set(1.0f, x, matrixSize-1);
+    }
+}
+
 
 float* Matrix::getData()
 {

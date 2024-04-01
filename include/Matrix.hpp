@@ -17,6 +17,7 @@ public:
     virtual MatrixType getType() = 0;
 
     void fillRandom();
+    void fillRandomInputs();
     void print();
 
     virtual float* getData() = 0;
@@ -33,6 +34,8 @@ protected:
 
 class Matrix : public IMatrix {
 public:
+    ~Matrix();
+
     virtual void set(float, uint, uint);
     virtual float get(uint, uint);
     virtual MatrixType getType();
