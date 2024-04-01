@@ -21,6 +21,7 @@ matrix_operations_tests_obj += obj/MatrixSwapped.o
 matrix_operations_tests_obj += obj/time.o
 matrix_operations_tests_obj += obj/MatrixMultiplyTest.o
 matrix_operations_tests_obj += obj/MultiMatrixMultiplyTest.o
+matrix_operations_tests_obj += obj/testLists.o
 
 matrix_operations_tests: $(matrix_operations_tests_obj) $(libClPlatform)
 	@echo "\tLD\matrix_operations_tests"
