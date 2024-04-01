@@ -18,12 +18,8 @@ void testSingleMatrixMultiply()
     test_sw5.performTest();
 }
 
-int main()
+void testMultiMatrixMultiply()
 {
-    srand48(123456789);
-
-//    testSingleMatrixMultiply();
-
     MultiMatrix_SeparateNormal mm;
     MultiMatrixMultiplyTest multiTest(MultiMatrixType_separateNormal, MatrixType_normal, MultiMatrixType_separateNormal,
                                       "kernel/multi_matrix_mult.cl", "multiMatrixMultiply_simple_n_n_n");
@@ -65,6 +61,13 @@ int main()
     MultiMatrixMultiplyTest multiTest11(MultiMatrixType_combinedNormal, MatrixType_swapped, MultiMatrixType_combinedNormal,
                                         "kernel/multi_matrix_mult_sw.cl", "multiMatrixMultiply_opt3_cn_s_cn");
     multiTest11.performTest();
+}
 
+int main()
+{
+    srand48(123456789);
+
+    testSingleMatrixMultiply();
+    testMultiMatrixMultiply();
 }
 
