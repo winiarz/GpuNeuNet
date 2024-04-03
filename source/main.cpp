@@ -1,6 +1,5 @@
 #include <iostream>
 #include "testLists.hpp"
-#include "NeuronLayerTest.hpp"
 
 int main()
 {
