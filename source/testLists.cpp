@@ -2,6 +2,7 @@
 #include "Matrix.hpp"
 #include "MatrixMultiplyTest.hpp"
 #include "MultiMatrixMultiplyTest.hpp"
+#include "NeuronLayerTest.hpp"
 
 void testSingleMatrixMultiply()
 {
@@ -63,3 +64,22 @@ void testMultiMatrixMultiply()
     multiTest11.performTest();
 }
 
+void testSingleNeuronLayer()
+{
+
+
+    NeuronLayerTest test1("kernel/single_neur_layer.cl", "neur_layer_simple");
+    test1.performTest();
+
+    NeuronLayerTest test2("kernel/single_neur_layer.cl", "neur_layer_opt");
+    test2.performTest();
+
+    NeuronLayerTest test3("kernel/single_neur_layer.cl", "neur_layer_opt2");
+    test3.performTest();
+
+    NeuronLayerTest test4("kernel/single_neur_layer.cl", "neur_layer_opt3");
+    test4.performTest();
+
+    NeuronLayerTest test5("kernel/single_neur_layer.cl", "neur_layer_opt4");
+    test5.performTest();
+}

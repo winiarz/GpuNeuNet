@@ -2,4 +2,4 @@
 
 void testSingleMatrixMultiply();
 void testMultiMatrixMultiply();
-
+void testSingleNeuronLayer();
