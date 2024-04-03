@@ -1,6 +1,7 @@
 #include <iostream>
 #include "testLists.hpp"
 #include "MultiMatrixT.hpp"
+#include "NeuronNetwork.hpp"
 
 int main()
 {
@@ -11,5 +12,8 @@ int main()
     testSingleNeuronLayer();
 
     MultiMatrixT_SeparateNormal<10> mm;
+
+    Matrix inputs;
+    inputs.fillRandomInputs();
 }
 

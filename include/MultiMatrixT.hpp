@@ -9,6 +9,7 @@ class IMultiMatrixT {
 public:
     virtual void set(float, uint, uint, uint) = 0;
     virtual float get(uint, uint, uint) = 0;
+    Matrix getSingleMatrix(uint);
     virtual MultiMatrixType getType() = 0;
 
     void fillRandom();

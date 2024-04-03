@@ -1,6 +1,9 @@
 #include "MultiMatrixT.hpp"
 #include <iostream>
 
+template class IMultiMatrixT<100u>;
+template class MultiMatrixT_SeparateNormal<100u>;
+
 template<uint N>
 bool IMultiMatrixT<N>::operator==(IMultiMatrixT<N>& other)
 {
@@ -24,6 +27,20 @@ void IMultiMatrixT<N>::fillRandom()
     for(uint y=0; y<IMultiMatrixT<N>::matrixSize; y++)
       for(uint x=0; x<IMultiMatrixT<N>::matrixSize; x++)
         set(drand48(), x, y, n);
+}
+
+template<uint N>
+Matrix IMultiMatrixT<N>::getSingleMatrix(uint n)
+{
+  Matrix result;
+  
+  for(uint x=0; x<matrixSize; x++)
+    for(uint y=0; y<matrixSize; y++)
+      {
+        result.set( get(x,y,n), x, y);
+      }
+
+  return result;
 }
 
 template<uint N>
