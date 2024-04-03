@@ -17,6 +17,7 @@ obj/%.o: source/%.cpp
 matrix_operations_tests_obj += obj/main.o
 matrix_operations_tests_obj += obj/Matrix.o
 matrix_operations_tests_obj += obj/MultiMatrix.o
+matrix_operations_tests_obj += obj/MultiMatrixT.o
 matrix_operations_tests_obj += obj/MatrixSwapped.o
 matrix_operations_tests_obj += obj/time.o
 matrix_operations_tests_obj += obj/MatrixMultiplyTest.o

@@ -1,5 +1,6 @@
 #include <iostream>
 #include "testLists.hpp"
+#include "MultiMatrix.hpp"
 
 int main()
 {
@@ -8,5 +9,7 @@ int main()
     testSingleMatrixMultiply();
     testMultiMatrixMultiply();
     testSingleNeuronLayer();
+
+    MultiMatrixT_SeparateNormal<10> mm;
 }
 
