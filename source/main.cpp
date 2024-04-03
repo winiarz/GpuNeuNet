@@ -1,6 +1,6 @@
 #include <iostream>
 #include "testLists.hpp"
-#include "MultiMatrix.hpp"
+#include "MultiMatrixT.hpp"
 
 int main()
 {
