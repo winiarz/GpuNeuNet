@@ -42,21 +42,28 @@ std::vector<float> NeuronNetwork::calculateOutputs(std::vector<float> inputs)
 
 Matrix NeuronNetwork::calculateMultiOutputs(IMatrix& inputs)
 {
-  Matrix result;
-  
-  /*result = inputs * (*weights);
-
-  for(int i=0; i<IMatrix::matrixSize; i++)
+  Matrix result, temp_inputs;
+  temp_inputs.copyIn(inputs);
+ 
+  for(uint n=0; n<networkDepth; n++)
   {
-    result.set(1.0f, i, IMatrix::matrixSize-1);
+    Matrix layerWeights = weights->getSingleMatrix(n);
+    result = temp_inputs * layerWeights;
 
-    for(int j=0; j<IMatrix::matrixSize-1; j++)
+    for(int i=0; i<IMatrix::matrixSize; i++)
     {
-      float temp = result.get(i,j);
-      float temp2 = activationFunction(temp);
-      result.set(temp2, i, j);
+      result.set(1.0f, i, IMatrix::matrixSize-1);
+
+      for(int j=0; j<IMatrix::matrixSize-1; j++)
+      {
+        float temp = result.get(i,j);
+        float temp2 = activationFunction(temp);
+        result.set(temp2, i, j);
+      }
     }
-  }*/
+
+    temp_inputs = result;
+  }
 
   return result;
 }

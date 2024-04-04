@@ -26,7 +26,7 @@ void Matrix::set(float value, uint x, uint y)
     m[getIdx(x,y)] = value;
 }
 
-float Matrix::get(uint x, uint y)
+float Matrix::get(uint x, uint y) const
 {
     return m[getIdx(x,y)];
 }
@@ -49,6 +49,12 @@ void IMatrix::fillRandomInputs()
     }
 }
 
+void IMatrix::copyIn(const IMatrix& source)
+{
+  for(uint x=0; x<matrixSize; x++)
+    for(uint y=0; y<matrixSize; y++)
+      set( source.get(x,y), x, y);
+}
 
 float* Matrix::getData()
 {
@@ -82,7 +88,7 @@ Matrix operator*(IMatrix& A, IMatrix& B)
     return result;
 }
 
-uint Matrix::getIdx(uint x, uint y)
+uint Matrix::getIdx(uint x, uint y) const
 {
     return x + matrixSize*y;
 }

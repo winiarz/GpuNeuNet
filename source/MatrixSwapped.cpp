@@ -7,7 +7,7 @@ void MatrixSwapped::set(float value, uint x, uint y)
     m[getIdx(x,y)] = value;
 }
 
-float MatrixSwapped::get(uint x, uint y)
+float MatrixSwapped::get(uint x, uint y) const
 {
     return m[getIdx(x,y)];
 }
@@ -24,7 +24,7 @@ float* MatrixSwapped::getData()
     return m;
 }
 
-uint MatrixSwapped::getIdx(uint x, uint y)
+uint MatrixSwapped::getIdx(uint x, uint y) const
 {
     return y + matrixSize*x;
 }
