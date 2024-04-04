@@ -68,3 +68,8 @@ Matrix NeuronNetwork::calculateMultiOutputs(IMatrix& inputs)
   return result;
 }
 
+std::shared_ptr<ClTypedMemory<float>> NeuronNetwork::copyToGpu()
+{
+    return weights->copyToGpu();
+}
+
