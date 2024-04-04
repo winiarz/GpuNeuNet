@@ -37,7 +37,7 @@ int main()
     measureTime("neuron_network_simple", [&](){(*kernel)[1u][256u](gpuMemory);});
 
     Matrix gpuResults;
-    gpuMemory[2]->copyOut(gpuResults.getData(), 0, sizeof(float) * IMatrix::matrixSize * IMatrix::matrixSize );
+    gpuMemory[0]->copyOut(gpuResults.getData(), 0, sizeof(float) * IMatrix::matrixSize * IMatrix::matrixSize );
 
     if(result == gpuResults)
     {
