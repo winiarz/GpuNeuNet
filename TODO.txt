@@ -1,16 +1,18 @@
-Taskt to do:
+Tasks to do:
 
-1. Optimize optimization process. Eliminate multiple optimization attempts:
+1. Copy new implementation to repository. Integrate main function, remove redundant code from old repository.
+2. Optimize optimization process. Eliminate multiple optimization attempts:
   - add tryOptimize() in IFunction interface ( if(not was optimized) { optimize(); }
   - replace optimize by tryOptimize wherever possible
-2. Try to find where functions tree is searched multiple times (needlesly)
-3. Implement printing cpp code with multiple lines:
+3. Try to find where functions tree is searched multiple times (needlesly)
+4. Implement printing cpp code with multiple lines:
   - declare print constants
   - declare temp variables array
   - print temp variables assign (in right order!)
   - print result assign
-4. Create simple network for tic-tac-toe. Try to perform learning.
-5. More neuron types? Try to invent more formulas.
-6. Implement OpenCL code printing.
-7. Try learning tic-tac-toe on GPU
-8. 
+5. Create simple network for tic-tac-toe. Try to perform learning.
+6. More neuron types? Try to invent more formulas.
+7. Implement OpenCL code printing.
+8. Try learning tic-tac-toe on GPU
+9. Create tests for functions and derivatives.
+10. 
